@@ -1,0 +1,89 @@
+﻿
+<form action="/Work/Add" method="post" class="needs-validation">
+    <div class="modal" id="myModal">
+        <div class="modal-dialog">
+            <label id="lblresult"></label>
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Quản lý công tác</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <input type="hidden" name="ID" id="ID" value="0">
+                    <div class="form-group">
+                        <label>Tên công việc *</label>
+                        <input class="form-control" type="text" id="Name_Work" name="Name_Work" />
+                    </div>
+                    <div class="form-group">
+                        <label>Mô tả</label>
+                        <textarea id="Description_Work" name="Description_Work" value=""></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Chi tiết công việc</label>
+                        <textarea id="Details_Work" name="Details_Work" value=""></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Ngày bắt đầu</label>
+                        <input class="form-control" type="date" id="DateWorkStart" name="DateWorkStart" data-date-format />
+                    </div>
+                    <div class="form-group">
+                        <label>Ngày kết thúc</label>
+                        <input class="form-control" type="date" id="DateWorkEnd" name="DateWorkEnd" data-date-format />
+                    </div>
+                    <div class="form-group">
+                        <label>Ghi chú</label>
+                        <textarea name="Note" id="Note" value=""></textarea>
+                    </div>
+                    <div class="form-group" hidden>
+                        <label>CreatedDate</label>
+                        <input class="form-control" type="text" id="CreatedDate" name="CreatedDate" value="System.DateTime.Now" />
+                    </div>
+                    <div class="form-group">
+                        <label>Trạng thái</label>
+                        <select name="Status" class="form-control">
+                            <option value="HoatDong">Hoạt động</option>
+                            <option value="KhongHoatDong">Không hoạt động</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal"><i class="fa fa-lightbulb-o"></i>&nbsp; Đóng</button>
+                    <button type="reset" class="btn btn-warning btn-sm"><i class="fa fa-map-marker"></i>&nbsp; Làm mới</button>
+
+                    <input type="submit" name="submit" class="btn btn-success btn-sm" id="bt_sua" value="Cập Nhật" />
+                    <input type="submit" name="submit" class="btn btn-success btn-sm" id="bt_them" value="Thêm" />
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>
+<script src="~/assets/ckeditor/ckeditor.js"></script>
+<script src="~/assets/ckfinder/ckfinder.js"></script>
+<script>
+
+    CKEDITOR.replace("Description_Work");
+    CKEDITOR.replace("Details_Work");
+    CKEDITOR.replace("Note");
+   
+
+    CKFinder.setupCKEditor(null, '/ckfinder');
+</script>
+<script type="text/javascript">
+    function BrowseServer() {
+        var finder = new CKFinder();
+        finder.basePath = "~/Scrips/ckfinder";
+        finder.selectActionFunction = SetFileField;
+        finder.popup();
+    }
+</script>
+
+

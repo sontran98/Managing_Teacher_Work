@@ -1,0 +1,18 @@
+﻿@using Managing_Teacher_Work.Models;
+@{ 
+   var listMenu = (List<Menu>)ViewBag.listMenu;
+}
+<div class="menu_section">
+    <h3>Menu hệ thống</h3>
+    <ul class="nav side-menu">
+        @foreach (var item in listMenu)
+        {
+            <li>
+                <a href="/@item.MenuUrl/"><i class="fa fa-home"></i>@item.Name</a>
+
+            </li>
+        }
+       
+        
+    </ul>
+</div>
